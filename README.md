@@ -6,16 +6,17 @@ Allows you to use MathJax's fonts in LaTeX. Why? If you're creating diagrams in 
 ```
 make install
 ```
-This installs stuff to ~/.texmf-var. If you don't want that then change the TEXMF variable in the Makefile. See the otftotfm manual for more info.
+This installs stuff to ~/.texmf-var. If you don't want that then change the TEXMF variable in the [Makefile](https://github.com/jennigorham/mathjax-fonts-in-latex/blob/master/Makefile). See the otftotfm manual for more info.
 
 
 ## Usage
 
 Add `\usepackage{mathjax}` to your tex file (or your texpre file for inclusion in metapost). There are two options you can set: `osf` which gives you old style figures in maths, and `slgreek` which makes the capital greek letters slanted (use `\upGamma` etc to get upright ones). e.g. `\usepackage[osf,slgreek]{mathjax}` to turn them both on.
 
-Run `make examples` to make the example files: example.pdf, example-diagram-1.pdf, and example.html which displays MathJax and the diagram, hopefully in the same font. 
+Run `make examples` to make the example files: example.pdf, example-diagram-1.pdf, and example.html which displays MathJax and the diagram, hopefully in the same font, like this:  
+![screenshot of example.html](https://cloud.githubusercontent.com/assets/24600895/23346868/408814f0-fcf2-11e6-8bd5-6b651de527cc.png)
 
-You can use the TEX macro in metapost and configure it to load the mathjax package, as in example-diagram.mp, or you can create a file "texpre.tex":
+You can use the TEX macro in metapost and configure it to load the mathjax package, as in [example-diagram.mp](https://github.com/jennigorham/mathjax-fonts-in-latex/blob/master/example-diagram.mp), or you can create a file "texpre.tex":
 ```
 %&latex
 \documentclass[12pt]{article}
@@ -47,7 +48,7 @@ If the glyph isn't in any .enc file, then you'll need to find out which font it 
 otfinfo -g *.otf | grep <glyphname>
 ```
 Or if you'd rather see the glyphs, you can install fntsample (e.g., `sudo apt-get install fntsample`) then run `make fontsamples`. Look through the pdfs to find out which font has the glyph.  
-Note: there are more MathJax fonts than the ones I've used. You can add any of the following to the FONTS list in the Makefile:
+Note: there are more MathJax fonts than the ones I've used. You can add any of the following to the FONTS list in the [Makefile](https://github.com/jennigorham/mathjax-fonts-in-latex/blob/master/Makefile):
 ```
 MathJax_AMS-Regular.otf          MathJax_SansSerif-Bold.otf
 MathJax_Caligraphic-Bold.otf     MathJax_SansSerif-Italic.otf
@@ -62,7 +63,7 @@ MathJax_Math-Italic.otf          MathJax_WinChrome-Regular.otf
 MathJax_Math-Regular.otf         MathJax_WinIE6-Regular.otf
 ```
 
-Once you've found the glyph in a font, save a copy of that font's .enc file as e.g. "foo.enc" and add the glyph name to one of the `/.notdef` spaces (remember what hex address it's at). Edit the Makefile's "install:" section so that otftotfm uses foo.enc, e.g. 
+Once you've found the glyph in a font, save a copy of that font's .enc file as e.g. "foo.enc" and add the glyph name to one of the `/.notdef` spaces (remember what hex address it's at). Edit the [Makefile](https://github.com/jennigorham/mathjax-fonts-in-latex/blob/master/Makefile)'s "install:" section so that otftotfm uses foo.enc, e.g. 
 ```
 otftotfm -a -e foo <font.otf> <fontname>
 ```
@@ -70,6 +71,6 @@ Add lines to mathjax.sty to make the glyph available, e.g.
 ```
 \DeclareMathSymbol{,}\mathpunct{operators}{"2C}
 ```
-(2C was the hex address from the enc file we found. The "operators" font was declared earlier in mathjax.sty with `\DeclareSymbolFont{operators}{T1}{MathJax}{m}{n}` to refer to the "MathJax" font defined as `\DeclareFontShape{T1}{MathJax}{m}{n}{ <-> mathjaxr }{}`, which uses "mathjaxr" created in the Makefile with the line `otftotfm -a -e mathjaxr MathJax_Main-Regular.otf mathjaxr` which uses the file "mathjaxr.enc" as the encoding.)
+(2C was the hex address from the enc file we found. The "operators" font was declared earlier in mathjax.sty with `\DeclareSymbolFont{operators}{T1}{MathJax}{m}{n}` to refer to the "MathJax" font defined as `\DeclareFontShape{T1}{MathJax}{m}{n}{ <-> mathjaxr }{}`, which uses "mathjaxr" created in the [Makefile](https://github.com/jennigorham/mathjax-fonts-in-latex/blob/master/Makefile) with the line `otftotfm -a -e mathjaxr MathJax_Main-Regular.otf mathjaxr` which uses the file "mathjaxr.enc" as the encoding.)
 
 Then run `make install`.
