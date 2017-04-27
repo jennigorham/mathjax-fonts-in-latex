@@ -1,5 +1,8 @@
 # mathjax-fonts-in-latex
-Allows you to use MathJax's fonts in LaTeX. Why? If you're creating diagrams in MetaPost (or any other drawing program that can use LaTeX labels) to display on a website alongside MathJax then it's nice to have the font in the diagrams match the maths font, and MathJax's version of computer modern is a much heavier weight than the one that comes with LaTeX.
+Allows you to use MathJax's fonts in LaTeX. Why? If you're creating diagrams in MetaPost (or any other drawing program that can use LaTeX labels) to display on a website alongside MathJax then it's nice to have the font in the diagrams match the maths font, and MathJax's version of computer modern is a much heavier weight than the one that comes with LaTeX. 
+
+Below are two screenshots of [example.html](https://github.com/jennigorham/mathjax-fonts-in-latex/blob/master/example.html) with maths rendered with MathJax up the top, and a MetaPost diagram at the bottom. Note how thin the font is in the "before" diagram: this is LaTeX's default version of computer modern, which looks out of place alongside MathJax's.
+![before and after screenshots of example.html](https://cloud.githubusercontent.com/assets/24600895/25506394/b85cc464-2be9-11e7-8ff9-cf3ac28838a9.png)
 
 
 ## Installation
@@ -13,8 +16,7 @@ This installs stuff to ~/.texmf-var. If you don't want that then change the TEXM
 
 Add `\usepackage{mathjax}` to your tex file (or your texpre file for inclusion in metapost). There are two options you can set: `osf` which gives you old style figures in maths, and `slgreek` which makes the capital greek letters slanted (use `\upGamma` etc to get upright ones). e.g. `\usepackage[osf,slgreek]{mathjax}` to turn them both on.
 
-Run `make examples` to make the example files: example.pdf, example-diagram-1.pdf, and example.html which displays MathJax and the diagram, hopefully in the same font, like this:  
-![screenshot of example.html](https://cloud.githubusercontent.com/assets/24600895/23346868/408814f0-fcf2-11e6-8bd5-6b651de527cc.png)
+Run `make examples` to make the example files: example.pdf, example-diagram-1.pdf, and example.html which displays MathJax and the diagram. If everything's working right, it should look like the "after" screenshot above.
 
 You can use the TEX macro in metapost and configure it to load the mathjax package, as in [example-diagram.mp](https://github.com/jennigorham/mathjax-fonts-in-latex/blob/master/example-diagram.mp), or you can create a file "texpre.tex":
 ```
