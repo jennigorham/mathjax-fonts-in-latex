@@ -36,7 +36,14 @@ You can use the TEX macro in metapost and configure it to load the mathjax packa
 \usepackage{mathjax}
 \begin{document}
 ```
-And set `MPTEXPRE=/path/to/texpre.tex` in your shell.
+And set `MPTEXPRE=/path/to/texpre.tex` in your shell (this also works for `btex ... etex` style labels).
+
+Or you can use
+```
+defaultfont:="mathjaxr--base";
+defaultscale := 12pt/fontsize defaultfont; %scale to 12pt
+```
+for plain text labels (`label("foo",...`).
 
 
 ## Getting other glyphs working
