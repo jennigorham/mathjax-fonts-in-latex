@@ -9,7 +9,18 @@ Below are two screenshots of [example.html](https://github.com/jennigorham/mathj
 ```
 make install
 ```
-This installs stuff to ~/.texmf-var. If you don't want that then change the TEXMF variable in the [Makefile](https://github.com/jennigorham/mathjax-fonts-in-latex/blob/master/Makefile). See the otftotfm manual for more info.
+Then to check that it's working, run
+```
+make examples
+```
+which creates example-diagram-1.pdf and example.pdf.
+
+
+## example.pdf
+
+This is how example.pdf should appear:
+
+![2018-12-09-080824_1374x892_scrot](https://user-images.githubusercontent.com/24600895/49690769-829a2980-fb8a-11e8-89ad-9e0bac63b9b0.png)
 
 
 ## Usage
