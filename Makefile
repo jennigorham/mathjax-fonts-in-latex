@@ -1,4 +1,4 @@
-TEXMF=~/.texmf-var
+TEXMF=`kpsewhich -var-value TEXMFHOME`
 PKGDIR=$(TEXMF)/tex/latex/mathjax
 FONTS= MathJax_Main-Regular.otf MathJax_Main-Bold.otf MathJax_Main-Italic.otf MathJax_Caligraphic-Regular.otf MathJax_Math-Italic.otf MathJax_Math-BoldItalic.otf
 FONTSAMPLES= $(addsuffix .pdf,$(basename $(FONTS)))
@@ -30,8 +30,8 @@ install: $(FONTS) installsty
 	otftotfm --no-updmap -a -e mathjaxmi MathJax_Math-Italic.otf mathjaxmi
 	otftotfm --no-updmap -a -e mathjaxbi MathJax_Math-BoldItalic.otf mathjaxbi
 	otftotfm --no-updmap -a -e lm-mathit --slant=-0.25 MathJax_Math-Italic.otf mathjaxug #upgreek (not slanted)
-	updmap --nomkmap --enable Map lcdftools.map
-	updmap
+	updmap -user --nomkmap --enable Map lcdftools.map
+	updmap -user
 
 
 example-diagram-1.pdf: example-diagram.mp
