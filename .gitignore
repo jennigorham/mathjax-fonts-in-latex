@@ -1,3 +1,7 @@
 *.otf
 *.pdf
 *.swp
+*.aux
+*.log
+*.svg
+*.1

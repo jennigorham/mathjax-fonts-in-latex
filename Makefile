@@ -35,7 +35,7 @@ install: $(FONTS) installsty
 
 
 example-diagram-1.pdf: example-diagram.mp
-	mptopdf example-diagram.mp
+	MPTEXPRE=''; mptopdf example-diagram.mp
 
 example-diagram-1.svg: example-diagram-1.pdf
 	pdf2svg example-diagram-1.pdf example-diagram-1.svg
